@@ -5,7 +5,7 @@
 Summary:        OpenJDK
 Name:           openjdk8
 Version:        1.8.0.292
-Release:        1%{?dist}
+Release:        2%{?dist}
 License:        ASL 1.1 and ASL 2.0 and BSD and BSD with advertising and GPL+ and GPLv2 and GPLv2 with exceptions and IJG and LGPLv2+ and MIT and MPLv2.0 and Public Domain and W3C and zlib
 URL:            https://openjdk.java.net
 Group:          Development/Tools
@@ -30,6 +30,7 @@ BuildRequires:  zlib-devel
 Requires:       openjre8 = %{version}-%{release}
 Requires:       chkconfig
 Obsoletes:      openjdk <= %{version}
+Provides:       java-devel = %{version}-%{release}
 AutoReqProv:    no
 
 %description
@@ -254,6 +255,8 @@ rm -rf %{buildroot}/*
 %{_libdir}/jvm/OpenJDK-%{version}/src.zip
 
 %changelog
+*   Mon Aug 30 2021 Bala <balakumaran.kannan@microsoft.com> - 1.8.0.292-2
+-   Provide java-devel
 *   Fri Apr 16 2021 Nick Samson <nick.samson@microsoft.com> - 1.8.0.292-1
 -   Update to 8u292 to address CVEs
 -   Switch to AdoptOpenJDK-generated source tarball
