@@ -10,6 +10,8 @@ $(call create_folder,$(BUILD_SPECS_DIR))
 
 srpms = $(shell find $(BUILD_SRPMS_DIR)/ -type f -name '*.src.rpm')
 srpms_basename = $(foreach srpm,$(srpms),$(notdir $(srpm)))
+srpm_expand_logs_dir = $(LOGS_DIR)/srpm_expand
+srpm_expand_log = $(srpm_expand_logs_dir)/srpm_expand.log
 
 .PHONY: expand-specs clean-expand-specs
 expand-specs: $(BUILD_SPECS_DIR)
@@ -28,15 +30,16 @@ $(BUILD_SPECS_DIR): $(STATUS_FLAGS_DIR)/build_specs.flag
 
 # For each SRPM, if it is newer than the spec extract a new copy of the .spec file
 $(STATUS_FLAGS_DIR)/build_specs.flag: $(srpms) $(BUILD_SRPMS_DIR)
-	# For each SRPM, if it is newer than the spec extract a new copy of the .spec file
+	@echo "Extracting new or updated SRPMs from \"$(BUILD_SRPMS_DIR)\"." | tee $(srpm_expand_log) && \
 	for srpm in $(srpms_basename); do \
-		srpm_file=$(BUILD_SRPMS_DIR)/$${srpm} && \
-		spec_destination=$(BUILD_SPECS_DIR)/$$(rpm -qp $${srpm_file} --define='with_check 1' --queryformat %{NAME}-%{VERSION}-%{RELEASE}/%{NAME}.spec) && \
-		spec_dir=$$(dirname $${spec_destination}) && \
-		if [ $${srpm_file} -nt $@ -o ! -f $@ ]; then \
-			mkdir -p $${spec_dir} && \
-			echo extracting $${spec_destination} && \
-			cd $${spec_dir} && rpm2cpio $${srpm_file} | cpio -idvu || $(call print_error,Failed to expand $${srpm_file}) ; \
-		fi || $(call print_error,If in $@ failed) ; \
-	done || $(call print_error,Loop in $@ failed) ; \
+		spec_destination=$(BUILD_SPECS_DIR)/$$(rpm -qp $$srpm_file --define='with_check 1' --queryformat %{NAME}-%{VERSION}-%{RELEASE}/%{NAME}.spec) && \
+		spec_dir=$$(dirname $$spec_destination) && \
+		if [ ! -f $@ -o $$srpm -nt $@ ]; then \
+			srpm_filename=$$(basename $$srpm) && \
+			echo "Extracting \"$$srpm_filename\" to \"$$spec_dir\"." | tee -a $(srpm_expand_log) && \
+			mkdir -p $$spec_dir && \
+			cd $$spec_dir && \
+			rpm2cpio $$srpm | cpio -idvu 2>>$(srpm_expand_log) || $(call print_error,Failed to expand "$$srpm".); \
+		fi \
+	done || $(call print_error,Checking for spec updates failed. See above errors and "$(srpm_expand_log)" for more details.); \
 	touch $@
