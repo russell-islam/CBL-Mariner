@@ -243,7 +243,7 @@ libtirpc-1.1.4-4.cm1.aarch64.rpm
 libtirpc-debuginfo-1.1.4-4.cm1.aarch64.rpm
 libtirpc-devel-1.1.4-4.cm1.aarch64.rpm
 libtool-2.4.6-8.cm1.aarch64.rpm
-libtool-debuginfo-2.4.6-5.cm1.aarch64.rpm
+libtool-debuginfo-2.4.6-8.cm1.aarch64.rpm
 libxml2-2.9.12-1.cm1.aarch64.rpm
 libxml2-debuginfo-2.9.12-1.cm1.aarch64.rpm
 libxml2-devel-2.9.12-1.cm1.aarch64.rpm
