@@ -412,6 +412,7 @@
         "gawk",
         "gc",
         "gcc",
+        "gd",
         "gdb",
         "gdbm",
         "gettext",

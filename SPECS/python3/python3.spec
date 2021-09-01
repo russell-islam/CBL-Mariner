@@ -35,7 +35,7 @@ Provides:       %{_bindir}/python
 Provides:       /bin/python
 Provides:       /bin/python3
 Provides:       %{name}-docs = %{version}-%{release}
-Provides:       /usr/bin/pathfix.py
+Provides:       %{_bindir}/pathfix.py
 %if %{with_check}
 BuildRequires:  iana-etc
 BuildRequires:  tzdata
@@ -126,9 +126,9 @@ The PyPA recommended tool for installing Python packages.
 Summary:        Download, build, install, upgrade, and uninstall Python packages.
 Group:          Development/Tools
 Requires:       python3 = %{version}-%{release}
+Requires:       python3-xml
 Provides:       python3dist(setuptools) = %{version}-%{release}
 Provides:       python3.7dist(setuptools) = %{version}-%{release}
-Requires:       python3-xml
 BuildArch:      noarch
 
 %description    setuptools

@@ -58,8 +58,8 @@ make %{?_smp_mflags} check
 %{_mandir}/*
 
 %changelog
-*   Mon Aug 30 2021 Bala <balakumaran.kannan@microsoft.com> - 0.19.8.1-5
--   Add provides for devel package
+* Mon Aug 30 2021 Bala <balakumaran.kannan@microsoft.com> - 0.19.8.1-5
+- Add provides for devel package
 
 *   Thu Jan 05 2021 Andrew Phelps <anphel@microsoft.com> 0.19.8.1-4
 -   Undefine "_ld_as_needed" to fix tests "test-thread_create" and "test-tls".

@@ -180,7 +180,6 @@ rm %{buildroot}%{_datadir}/applications/org.opensc.notify.desktop
 %{_libdir}/pkcs11/pkcs11-spy.so
 %{_datadir}/opensc/
 
-
 %changelog
 * Mon Aug 30 2021 Bala <balakumaran.kannan@microsoft.com> - 0.20.0-9
 - License verified

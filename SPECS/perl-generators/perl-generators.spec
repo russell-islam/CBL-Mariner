@@ -5,7 +5,7 @@ Release:        6%{?dist}
 License:        GPL+
 Vendor:         Microsoft Corporation
 Distribution:   Mariner
-URL:            http://jplesnik.fedorapeople.org/generators
+URL:            https://jplesnik.fedorapeople.org/generators
 Source0:        %{url}/generators-%{version}.tar.gz
 BuildRequires:  coreutils
 BuildRequires:  make

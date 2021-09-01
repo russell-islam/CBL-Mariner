@@ -9,7 +9,7 @@ Release:        %{?prever:0.}5%{?prever:.%{prever}}%{?dist}
 License:        BSD
 Vendor:         Microsoft Corporation
 Distribution:   Mariner
-URL:            http://www.opendnssec.org/
+URL:            https://www.opendnssec.org/
 Source0:        http://dist.opendnssec.org/source/%{?prever:testing/}%{name}-%{version}.tar.gz
 Source1:        http://dist.opendnssec.org/source/%{?prever:testing/}%{name}-%{version}.tar.gz.sig
 Patch1:         softhsm-2.6.1-rh1831086-exit.patch

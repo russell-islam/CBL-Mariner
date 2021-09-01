@@ -1,18 +1,3 @@
-#
-# spec file for package gd
-#
-# Copyright (c) 2020 SUSE LLC
-#
-# All modifications and additions to the file contributed by third parties
-# remain the property of their copyright owners, unless otherwise agreed
-# upon. The license for this file, and modifications and additions to the
-# file, is the same license as for the pristine package itself (unless the
-# license for the pristine package is not an Open Source License, in which
-# case the license is the MIT License). An "Open Source License" is a
-# license that conforms to the Open Source Definition (Version 1.9)
-# published by the Open Source Initiative.
-# Please submit bugfixes or comments via https://bugs.opensuse.org/
-#
 %define prjname libgd
 %define lname libgd3
 Summary:        A Drawing Library for Programs That Use PNG and JPEG Output
@@ -147,11 +132,12 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_libdir}/pkgconfig/gdlib.pc
 
 %changelog
+#FIXME: First changelog entry header failed to parse
 * Mon Aug 30 2021 Bala <balakumaran.kannan@microsoft.com> - 2.3.0-2.3
 - License verified
 
 * Thu Dec 17 2020 Joe Schmitt <joschmit@microsoft.com> - 2.3.0-2.2
-- Initial CBL-Mariner import from SUSE (license: MIT)
+- Initial CBL-Mariner import from Photon (license: Apache2).
 - Remove X11 dependencies
 
 * Sun Aug  9 2020 Matthias Eliasson <elimat@opensuse.org>
