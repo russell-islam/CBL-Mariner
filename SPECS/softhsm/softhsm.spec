@@ -11,7 +11,6 @@ Vendor:         Microsoft Corporation
 Distribution:   Mariner
 URL:            https://www.opendnssec.org/
 Source0:        http://dist.opendnssec.org/source/%{?prever:testing/}%{name}-%{version}.tar.gz
-Source1:        http://dist.opendnssec.org/source/%{?prever:testing/}%{name}-%{version}.tar.gz.sig
 Patch1:         softhsm-2.6.1-rh1831086-exit.patch
 BuildRequires:  cppunit-devel
 BuildRequires:  gcc
@@ -56,8 +55,15 @@ autoreconf -fiv
 %endif
 
 %build
-%configure --libdir=%{_libdir}/pkcs11 --with-openssl=%{_prefix} --enable-ecc --enable-eddsa --disable-gost \
-           --with-migrate --enable-visibility --with-p11-kit=%{_datadir}/p11-kit/modules/
+%configure \
+        --libdir=%{_libdir}/pkcs11 \
+        --with-openssl=%{_prefix} \
+        --enable-ecc \
+        --enable-eddsa \
+        --disable-gost \
+        --with-migrate \
+        --enable-visibility \
+        --with-p11-kit=%{_datadir}/p11-kit/modules/
 
 %make_build
 

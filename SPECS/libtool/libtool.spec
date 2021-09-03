@@ -1,4 +1,3 @@
-%define sha1    libtool=3e7504b832eb2dd23170c91b6af72e15b56eb94e
 Summary:        Shared libraries, portable interface
 Name:           libtool
 Version:        2.4.6
@@ -89,9 +88,9 @@ make %{?_smp_mflags} check
 
 %changelog
 * Mon Aug 30 2021 Bala <balakumaran.kannan@microsoft.com> - 2.4.6-8
-- Merged to 1.0 from dev branch
 - Replaced build commands with rpm macros
 - Corrected version in previous changelog
+- Removed sha1 macro
 
 * Fri Feb 05 2021 Joe Schmitt <joschmit@microsoft.com> - 2.4.6-7
 - Provide libtool-ltdl-devel%%{?_isa}

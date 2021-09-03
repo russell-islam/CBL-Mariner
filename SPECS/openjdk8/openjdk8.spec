@@ -90,13 +90,13 @@ export CXXFLAGS=$(echo $CXXFLAGS | sed "s/-Wall//" | sed "s/-Wformat// | sed "s/
 unset JAVA_HOME &&
 ./configur* \
 	--with-target-bits=64 \
-	--with-boot-jdk=%{_lib}/jvm/OpenJDK-212-b04-bootstrap \
+	--with-boot-jdk=%{_libdir}/jvm/OpenJDK-212-b04-bootstrap \
 	--disable-headful \
-	--with-cacerts-file=%{_lib}/jvm/OpenJDK-212-b04-bootstrap/jre/lib/security/cacerts \
+	--with-cacerts-file=%{_libdir}/jvm/OpenJDK-212-b04-bootstrap/jre/lib/security/cacerts \
 	--with-extra-cxxflags="-Wno-error -std=gnu++98 -fno-delete-null-pointer-checks -fno-lifetime-dse" \
 	--with-extra-cflags="-std=gnu++98 -fno-delete-null-pointer-checks -Wno-error -fno-lifetime-dse" \
 	--with-freetype-include=%{_includedir}/freetype2 \
-	--with-freetype-lib=%{_lib} \
+	--with-freetype-lib=%{_libdir} \
 	--with-stdc++lib=dynamic \
 	--with-native-debug-symbols=none \
 	--disable-zip-debug-info
@@ -108,7 +108,7 @@ make \
     JAVAC_FLAGS=-g \
     STRIP_POLICY=no_strip \
     DISABLE_HOTSPOT_OS_VERSION_CHECK=ok \
-    CLASSPATH=%{_lib}/jvm/OpenJDK-212-b04-bootstrap/jre \
+    CLASSPATH=%{_libdir}/jvm/OpenJDK-212-b04-bootstrap/jre \
     POST_STRIP_CMD="" \
     LOG=trace \
     SCTP_WERROR=
@@ -118,7 +118,7 @@ make DESTDIR=%{buildroot} install \
 	BUILD_HEADLESS_ONLY=yes \
 	OPENJDK_TARGET_OS=linux \
 	DISABLE_HOTSPOT_OS_VERSION_CHECK=ok \
-	CLASSPATH=%{_lib}/jvm/OpenJDK-212-b04-bootstrap/jre
+	CLASSPATH=%{_libdir}/jvm/OpenJDK-212-b04-bootstrap/jre
 
 install -vdm755 %{buildroot}%{_libdir}/jvm/OpenJDK-%{version}
 chown -R root:root %{buildroot}%{_libdir}/jvm/OpenJDK-%{version}

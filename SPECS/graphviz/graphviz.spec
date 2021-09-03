@@ -53,8 +53,8 @@ BuildRequires:  gmp-devel
 BuildRequires:  guile-devel
 BuildRequires:  libjpeg-turbo-devel
 BuildRequires:  libpng-devel
-BuildRequires:  libtool
-BuildRequires:  libtool-ltdl-devel
+BuildRequires:  libltdl
+BuildRequires:  libltdl-devel
 BuildRequires:  lua-devel
 BuildRequires:  m4
 BuildRequires:  pango-devel
@@ -92,6 +92,8 @@ BuildRequires:  gts-devel
 %if %{LASI}
 BuildRequires:  lasi-devel
 %endif
+
+Provides:       %{_bindir}/dot
 
 %description
 A collection of tools for the manipulation and layout of graphs (as in nodes
@@ -174,7 +176,6 @@ Ocaml extension for graphviz.
 %package perl
 Summary:        Perl extension for graphviz
 Requires:       %{name} = %{version}-%{release}
-Requires:       perl(:MODULE_COMPAT_%(eval "`perl -V:version`"; echo $version))
 
 %description perl
 Perl extension for graphviz.
@@ -534,6 +535,8 @@ php --no-php-ini \
 * Mon Aug 30 2021 Bala <balakumaran.kannan@microsoft.com> - 2.42.4-4
 - License verified
 - Replaced build commands with rpm macros
+- Replaced libtool with libltdl
+- Add explicit provides for dot
 
 * Tue Jun 22 2021 Thomas Crain <thcrain@microsoft.com> - 2.42.4-3
 - Use pkgconfig(cairo) instead of cairo-devel build requirement

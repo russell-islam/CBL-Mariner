@@ -127,6 +127,7 @@ rm -rf %{buildroot}%{_mandir}/man1/npa-tool.1*
 # Remove the notification files
 rm %{buildroot}%{_bindir}/opensc-notify
 rm %{buildroot}%{_datadir}/applications/org.opensc.notify.desktop
+rm %{buildroot}%{_mandir}/man1/opensc-notify.1*
 
 
 %post -p /sbin/ldconfig
@@ -142,6 +143,7 @@ rm %{buildroot}%{_datadir}/applications/org.opensc.notify.desktop
 %{_mandir}/man5/opensc-%{_arch}.conf.5*
 %else
 %config(noreplace) %{_sysconfdir}/opensc.conf
+%{_mandir}/man5/opensc.conf.5*
 %endif
 
 %config(noreplace) %{_sysconfdir}/opensc-%{_arch}.conf
@@ -179,6 +181,28 @@ rm %{buildroot}%{_datadir}/applications/org.opensc.notify.desktop
 %{_libdir}/pkcs11/onepin-opensc-pkcs11.so
 %{_libdir}/pkcs11/pkcs11-spy.so
 %{_datadir}/opensc/
+%{_mandir}/man1/cardos-tool.1*
+%{_mandir}/man1/cryptoflex-tool.1*
+%{_mandir}/man1/eidenv.1*
+%{_mandir}/man1/gids-tool.1*
+%{_mandir}/man1/iasecc-tool.1*
+%{_mandir}/man1/netkey-tool.1*
+%{_mandir}/man1/openpgp-tool.1*
+%{_mandir}/man1/opensc-explorer.*
+%{_mandir}/man1/opensc-tool.1*
+%{_mandir}/man1/opensc-asn1.1*
+%{_mandir}/man1/piv-tool.1*
+%{_mandir}/man1/pkcs11-tool.1*
+%{_mandir}/man1/pkcs15-crypt.1*
+%{_mandir}/man1/pkcs15-init.1*
+%{_mandir}/man1/pkcs15-tool.1*
+%{_mandir}/man1/sc-hsm-tool.1*
+%{_mandir}/man1/westcos-tool.1*
+%{_mandir}/man1/dnie-tool.1*
+%{_mandir}/man1/egk-tool.1*
+%{_mandir}/man5/pkcs15-profile.5*
+
+
 
 %changelog
 * Mon Aug 30 2021 Bala <balakumaran.kannan@microsoft.com> - 0.20.0-9

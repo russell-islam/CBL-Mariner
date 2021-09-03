@@ -28,9 +28,9 @@ Requires:       openssl
 Requires:       python3-libs = %{version}-%{release}
 Requires:       readline
 Requires:       xz
-Provides:       python
-Provides:       python-sqlite
-Provides:       python(abi)
+Provides:       python = %{version}-%{release}
+Provides:       python-sqlite = %{version}-%{release}
+Provides:       python(abi) = %{version}-%{release}
 Provides:       %{_bindir}/python
 Provides:       /bin/python
 Provides:       /bin/python3
@@ -175,8 +175,8 @@ find %{buildroot}%{_libdir} -name '*.o' -delete
 rm %{buildroot}%{_bindir}/2to3
 rm -rf %{buildroot}%{_bindir}/__pycache__
 
-# %check
-# make  %{?_smp_mflags} test
+%check
+make  %{?_smp_mflags} test
 
 %post -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
@@ -275,8 +275,8 @@ rm -rf %{buildroot}%{_bindir}/__pycache__
 
 %changelog
 * Mon Aug 30 2021 Bala <balakumaran.kannan@microsoft.com> - 3.7.10-5
-- Merged to 1.0 from dev branch
 - Add explicit provides for pathfix.py
+- Add version for provides
 
 * Fri Aug 20 2021 Rachel Menge <rachelmenge@microsoft.com> 3.7.10-4
 - Move libpython3.7.so to devel files to resolve broken symlink 

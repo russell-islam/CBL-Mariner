@@ -9,8 +9,6 @@ Vendor:         Microsoft Corporation
 Distribution:   Mariner
 URL:            https://ccid.apdu.fr/files
 Source0:        https://ccid.apdu.fr/files/ccid-%{version}.tar.bz2
-Source1:        https://ccid.apdu.fr/files/ccid-%{version}.tar.bz2.asc
-Source2:        gpgkey-F5E11B9FFE911146F41D953D78A1B4DFE8F9C57E.gpg
 Patch0:         ccid-1.4.26-omnikey-3121.patch
 BuildRequires:  gcc
 BuildRequires:  gnupg2
@@ -34,7 +32,6 @@ Generic USB CCID (Chip/Smart Card Interface Devices) driver for use with the
 PC/SC Lite daemon.
 
 %prep
-gpg --verify --keyring %{SOURCE2} %{SOURCE1} %{SOURCE0}
 
 %autosetup -p1 -n ccid-%{version}
 
@@ -66,7 +63,7 @@ cp -p src/openct/LICENSE LICENSE.openct
 * Mon Aug 30 2021 Bala <balakumaran.kannan@microsoft.com> - 1.4.33-2
 - Initial CBL-Mariner import from Fedora 32 (license: MIT)
 - License verified
-- Update gpgv2 commands with gpg commands
+- Removed gpg checks
 
 * Thu Jun 25 2020 Jakub Jelen <jjelen@redhat.com> - 1.4.33-1
 - New upstream release (#1851217)
